@@ -7,41 +7,35 @@ module Refills
     argument :snippet, type: :string, required: true
 
     def copy_html
-      copy_file view_name(snippet), view_destination
+      copy_file partial_name, File.join('app', 'views', 'refills', partial_name)
     end
 
     def copy_styles
-      copy_file stylesheet_template, stylesheet_destination
+      copy_file(
+        File.join('stylesheets', 'refills', stylesheet_name),
+        File.join('app', 'assets', 'stylesheets', 'refills', stylesheet_name)
+      )
     end
 
     def copy_javascripts
-      copy_file "javascripts/refills/_#{snippet}.js", "app/assets/javascripts/refills/_#{snippet}.js"
+      copy_file(
+        File.join('javascripts', 'refills', javascript_name),
+        File.join('app', 'assets', 'javascript', 'refills', javascript_name)
+      )
     end
 
     private
 
-    def stylesheet_destination
-      File.join('app', 'assets', 'stylesheets', 'refills', stylesheet_name(snippet_name))
+    def partial_name
+      "_#{snippet.underscore}.html.erb"
     end
 
-    def view_destination
-      File.join('app', 'views', 'refills', view_name(snippet_name))
+    def stylesheet_name
+      "_#{snippet.dasherize}.scss"
     end
 
-    def stylesheet_template
-      File.join('stylesheets', 'refills', stylesheet_name(snippet))
-    end
-
-    def view_name(name)
-      "_#{name}.html.erb"
-    end
-
-    def stylesheet_name(name)
-      "_#{name}.scss"
-    end
-
-    def snippet_name
-      snippet.underscore
+    def javascript_name
+      "#{snippet.underscore}.js"
     end
   end
 end
