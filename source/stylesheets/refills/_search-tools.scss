@@ -1,0 +1,70 @@
+.search-tools {
+  $search-tools-border-color: $base-border-color;
+  $search-tools-background: lighten($search-tools-border-color, 10);
+
+  @include clearfix;
+  border: 1px solid $search-tools-border-color;
+  background: $search-tools-background;
+  padding: $gutter / 2;
+  border-radius: $base-border-radius;
+
+  .filter {
+    margin-bottom: 1em;
+
+    @include media($large-screen) {
+      @include span-columns(5);
+      margin-bottom: 0;
+    }
+    
+    > div {
+      @extend input[type="text"];
+      position: relative;
+
+      label {
+        font-weight: 400;
+        cursor: pointer;
+        display: block;
+        margin-bottom: 0;
+      }
+    }
+
+    ol li label {
+      display: inline;
+      font-weight: 400;
+    }
+
+    button {
+      @include button(simple, lighten($search-tools-background, 10));
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: .7em;
+    }
+
+    .hide-options {
+      margin-bottom: 0;
+
+      ol, button {
+        display: none;
+      }
+    }
+  }  
+  
+  .search-tools-trigger {
+    width: 100%;
+
+    @include media($large-screen) {
+      @include span-columns(2);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1em;
+      padding-top: 11px;
+      padding-bottom: 11px;
+      @include media($large-screen) {
+        margin-top: 1.95em;
+      }
+    }
+  }
+}
