@@ -125,8 +125,13 @@ header.navigation {
 
   li.more {
     padding-right: 0;
+    overflow: visible;
 
-    &:hover .submenu {
+    > a {
+      color: red;      
+    }
+
+    &:hover > .submenu {
       display: block;
     }
 
@@ -140,13 +145,17 @@ header.navigation {
     padding-right: .8em;
   }
 
-  .submenu {
+  ul.submenu {
     display: none;
 
     @include media($horizontal-bar-mode) {
       position: absolute;
       top: 1em;
       left: -$navigation-submenu-padding;
+    }
+
+    .submenu {
+      left: 12em;
     }
 
     li {
