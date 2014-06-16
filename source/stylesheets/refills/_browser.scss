@@ -1,0 +1,69 @@
+$browser-top-bar-height: 2em;
+$browser-circle-size: .75em; 
+$browser-circle-margin: ($browser-top-bar-height - $browser-circle-size) / 2;
+$browser-border: 1px solid darken(#DBDBDB, 10);
+$browser-top-bar-background: lighten(#DFDFDF, 5);
+
+.browser {
+  border-bottom: 1px solid #DDD;
+
+  .browser-window {
+    @include media($large-screen) {
+      margin: 0 4em;
+    }
+  }
+
+  .browser-top-bar {
+    @include linear-gradient($browser-top-bar-background, darken($browser-top-bar-background, 2));
+    border: $browser-border;
+    box-shadow: inset 0 1px 0 transparentize(white, .6);
+    height: $browser-top-bar-height;
+    width: 100%;
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+  }
+
+  .browser-circle {
+    margin: $browser-circle-margin 0;
+    height: $browser-circle-size;
+    width: $browser-circle-size;
+    border-radius: $browser-circle-size * 2;
+    display: inline-block;
+    box-shadow: 0 1px 0px transparentize(white, .5), inset 0 1px 1px transparentize(black, 0.8);
+  }
+
+  .browser-circle:nth-child(1) {
+    background: #FF6F55;
+    margin-left: $browser-circle-margin;
+  }
+
+  .browser-circle:nth-child(2) {
+    background: #F5B01D;
+    margin-left: $browser-circle-margin / 3;
+  }
+
+  .browser-circle:nth-child(3) {
+    background: #51B151;
+    margin-left: $browser-circle-margin / 3;
+  }
+
+  .browser-content {
+    overflow: hidden;
+    background: url(/images/lake-transparent.png);
+    background-color: #657F61;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    border-left: $browser-border;
+    border-right: $browser-border;
+    height: 17em;
+
+    @include media($large-screen) {
+      height: 18em;
+    }
+  }
+
+  .browser-content img {
+    width: 100%;
+  }
+}
