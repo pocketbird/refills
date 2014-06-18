@@ -1,0 +1,17 @@
+.side-image {
+  @include clearfix;
+  background: #F1F1F1;
+}
+
+.side-image img {
+  @include span-columns(3);
+  // float: left;
+  // width: 30%;
+  height: 100%;
+}
+
+.side-image .content {
+  @include span-columns(9);
+  // width: 70%;
+  padding: 1em;
+}
